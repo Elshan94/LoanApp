@@ -1,0 +1,86 @@
+﻿
+@model LoanModel
+
+
+<h3 class="p-2  text-center">Loan Details</h3>
+<form asp-action="AddOrEdit" method="post">
+    <input type="hidden" value="Id" />
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Amount"></label>
+                <input asp-for="Amount" class="form-control" readonly />
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="InterestRate"></label>
+                <input asp-for="InterestRate" class="form-control" readonly />
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="DayOutPeriod"></label>
+                <input asp-for="DayOutPeriod" class="form-control" readonly />
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label asp-for="LoanPeriod"></label>
+                <input asp-for="LoanPeriod" class="form-control" readonly />
+            </div>
+        </div>
+
+    </div>
+
+    
+    @{ int i = 0;}
+    <div>
+        <table class="table table-sm table-striped table-bordered">
+            <thead style=" background-color: #004d40;padding:5px;color:#f2f2f2;font-weight:100;text-align:center;">
+                <tr>
+                    <th scope="col">OrderNr</th>
+                    <th scope="col">InvoiceNr</th>
+                    <th scope="col">DueDate</th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-body">
+                @if (Model?.Invoices != null)
+                {
+
+                    @foreach (var item in Model.Invoices)
+                    {
+                        <tr>
+                            <td><input class="form-control" name="Invoices[@i].OrderNr" value="@item.OrderNr" readonly /></td>
+                            <td> <input class="form-control" name="Invoices[@i].InvoiceNr" value="@item.InvoiceNr" readonly /> </td>
+                            <td> <input class="form-control" name="Invoices[@i].DueDate" value="@item.DueDate" readonly /> </td>
+                            <td> <input class="form-control" name="Invoices[@i].Amount" value="@item.Amount" readonly /> </td>
+                        </tr>
+                        i++;
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="buttons ">
+
+        <a asp-action="Index" style="float:right" class="btn btn-outline-success"> Cancel</a>
+
+    </div>
+</form>

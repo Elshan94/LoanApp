@@ -1,0 +1,97 @@
+﻿
+@model List<LoanModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h3 class="p-2 border border-secondary  text-center mt-2 loan-list-header">Loan List</h3>
+
+<hr />
+
+
+
+<div class="container-fluid mt-5" >
+
+    @if (Model.Count != 0)
+    {
+    <table class="table table-sm table-striped table-bordered">
+        <thead style=" background-color: #004d40;padding:5px;color:#f2f2f2;font-weight:100;text-align:center;">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">TelephoneNumber</th>
+                <th scope="col">Amount</th>
+                <th scope="col">PayoutDate</th>
+                <th scope="col"> </th>
+                @*<th scope="col"> </th>*@
+            </tr>
+        </thead>
+
+
+
+
+
+        <tbody>
+
+            @foreach (LoanModel item in Model)
+            {
+                <tr>
+                    <th scope="row"></th>
+                    <td>@item.Client.FirstName</td>
+                    <td>@item.Client.LastName</td>
+                    <td>@item.Client.TelephoneNumber</td>
+                    <td>@item.Amount</td>
+                    <td>@item.DayOutPeriod</td>
+                    <td>
+                        <a asp-action="AddOrEdit" asp-route-Id="@item.Id"
+                           class="btn btn-outline-success">
+                            Edit
+                        </a>
+                    </td>
+
+                    @*<td>
+                        <a asp-action="Detail" asp-route-Id="@item.Id"
+                           class="btn btn-outline-success">
+                            Detail
+                        </a>
+
+
+                    </td>*@
+                </tr>
+
+            }
+
+        </tbody>
+
+
+
+
+    </table>
+    }
+
+    else
+    {
+
+        <div >
+
+<p class="lead text-center"> There are no issued loans here</p>
+
+        </div>
+    }
+
+
+
+    <div class="text-right p-2" >
+        <a asp-action="AddOrEdit" asp-route-Id="0"
+           class="btn  btn-success" style="float:right; width:15%">Add new</a>
+    </div>
+
+</div>
+
+
+
+

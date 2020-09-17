@@ -1,0 +1,13 @@
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\bin\Debug\netcoreapp3.0\QuickBook.DataAccess.deps.json
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\bin\Debug\netcoreapp3.0\QuickBook.DataAccess.dll
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\obj\Debug\netcoreapp3.0\QuickBook.DataAccess.csprojAssemblyReference.cache
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\obj\Debug\netcoreapp3.0\QuickBook.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\obj\Debug\netcoreapp3.0\QuickBook.DataAccess.AssemblyInfo.cs
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\bin\Debug\netcoreapp3.0\QuickBook.DataAccess.runtimeconfig.json
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\bin\Debug\netcoreapp3.0\QuickBook.DataAccess.runtimeconfig.dev.json
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\bin\Debug\netcoreapp3.0\QuickBook.DataAccess.pdb
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\bin\Debug\netcoreapp3.0\QuickBook.Entities.dll
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\bin\Debug\netcoreapp3.0\QuickBook.Entities.pdb
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\obj\Debug\netcoreapp3.0\QuickBook.DataAccess.csproj.CopyComplete
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\obj\Debug\netcoreapp3.0\QuickBook.DataAccess.dll
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.DataAccess\obj\Debug\netcoreapp3.0\QuickBook.DataAccess.pdb

@@ -1,0 +1,8 @@
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.Entities\bin\Debug\netcoreapp3.0\QuickBook.Entities.deps.json
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.Entities\bin\Debug\netcoreapp3.0\QuickBook.Entities.dll
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.Entities\bin\Debug\netcoreapp3.0\QuickBook.Entities.pdb
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.Entities\obj\Debug\netcoreapp3.0\QuickBook.Entities.csprojAssemblyReference.cache
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.Entities\obj\Debug\netcoreapp3.0\QuickBook.Entities.AssemblyInfoInputs.cache
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.Entities\obj\Debug\netcoreapp3.0\QuickBook.Entities.AssemblyInfo.cs
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.Entities\obj\Debug\netcoreapp3.0\QuickBook.Entities.dll
+C:\Users\Lenovo\source\repos\QuickBook\QuickBook.Entities\obj\Debug\netcoreapp3.0\QuickBook.Entities.pdb

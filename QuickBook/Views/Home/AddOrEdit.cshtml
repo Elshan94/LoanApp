@@ -1,0 +1,177 @@
+﻿
+@model LoanModel
+
+<h3 class="p-2 mt-2 text-center">Issue Loan</h3>
+<form asp-action="AddOrEdit" method="post">
+    <input type="hidden" value="Id" />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Amount"></label>
+                <span asp-validation-for="Amount" class="text-danger"></span>
+                <input asp-for="Amount" class="form-control" />
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="InterestRate"></label>
+                <span asp-validation-for="InterestRate" class="text-danger"></span>
+                <input asp-for="InterestRate" class="form-control" />
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="DayOutPeriod"></label>
+                <span asp-validation-for="DayOutPeriod" class="text-danger"></span>
+                <input asp-for="DayOutPeriod" class="form-control" />
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label asp-for="LoanPeriod"></label>
+                <span asp-validation-for="LoanPeriod" class="text-danger"></span>
+                <input asp-for="LoanPeriod" class="form-control" />
+            </div>
+        </div>
+
+    </div>
+   
+    <div class="col-md-8 mx-auto">
+
+        <div class="form-group">
+            <label class="text-center" asp-for="Client"></label>
+            <span asp-validation-for="Client" class="text-danger"></span>
+            <select class="form-control " asp-for="ClientId">
+                @if (Model.Id == 0)
+                {
+                    <option disabled selected>Choose Client</option>
+                }
+                @foreach (var c in ViewBag.Clients)
+                {
+                    <option selected=@(Model.Client?.Id == c.Id)
+                            value="@c.Id">
+                        @c.FirstName
+                    </option>
+                }
+            </select>
+        </div>
+    </div>
+
+   
+  
+
+    
+
+ 
+
+    <div class="mb-2 mt-3" style="float:right">
+
+        <button type="button" id="calc-invoice" class="btn btn-outline-success"> Calculate invoices</button>
+
+    </div>
+    @{ int i = 0;}
+    <div>
+        <table  class="table table-sm table-striped table-bordered">
+            <thead style=" background-color: #004d40;padding:5px;color:#f2f2f2;font-weight:100;text-align:center;">
+                <tr>
+                    <th scope="col">OrderNr</th>
+                    <th scope="col">InvoiceNr</th>
+                    <th scope="col">DueDate</th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-body">
+                <tr>
+                    <td><input class="form-control"  readonly /></td>
+                    <td> <input class="form-control" readonly /> </td>
+                    <td> <input class="form-control" readonly /> </td>
+                    <td> <input class="form-control" readonly /> </td>
+                </tr>
+                @if (Model.Invoices != null)
+                {
+
+                    @foreach (var item in Model.Invoices)
+                    {
+                        <tr>
+                            <td><input class="form-control" name="Invoices[@i].OrderNr" value="@item.OrderNr" readonly /></td>
+                            <td> <input class="form-control" name="Invoices[@i].InvoiceNr" value="@item.InvoiceNr" readonly /> </td>
+                            <td> <input class="form-control" name="Invoices[@i].DueDate" value="@item.DueDate" readonly /> </td>
+                            <td> <input class="form-control" name="Invoices[@i].Amount" value="@item.Amount" readonly /> </td>
+                        </tr>
+                        i++;
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="buttons ">
+        <a asp-action="Index" style="float:right;" class="btn btn-outline-secondary"> Cancel</a>
+        <button type="submit" style="float:right;margin-right:5px" class="btn btn-success">Issue loan </button>
+
+
+    </div>
+</form>
+
+<script>
+
+
+    $("#calc-invoice").on("click", function (e) {
+       e.preventDefault();
+        var url = '@Url.Action(nameof(HomeController.CalculateInvoices),HomeController.Name)';
+
+       
+         var amount = $("#Amount").val();
+         var interestRate =$("#InterestRate").val();
+         var dueDate = $("#DayOutPeriod").val();
+         var period = $("#LoanPeriod").val();
+         var ClientId = $("#ClientId").val();
+
+
+         $.ajax({
+             type:"GET",
+             contentType: "application/json",
+             data: { amount: amount, period: period, interestRate: interestRate, DueDate: dueDate },
+             url: "/Home/CalculateInvoices",
+             success: function (result) {
+                 $("#table-body").empty();
+
+                 console.log(result);
+                 var convertedResult = jQuery.parseJSON(result);
+
+                    var row = "";
+                 for (var i = 0; i < convertedResult.length; i++) {
+                        row = "";
+                        row = "<tr>";
+                        row += `<td> <input name ="Invoices[${i}].OrderNr" value="${convertedResult[i].OrderNr}"  class="form-control" readonly/>  </td>`;
+                        row += `<td> <input name ="Invoices[${i}].InvoiceNr" value="${convertedResult[i].InvoiceNr}"  class="form-control" readonly/>   </td>`;
+                        row += `<td> <input name ="Invoices[${i}].DueDate" value="${convertedResult[i].DueDate}"  class="form-control" readonly/>   </td>`;
+                        row += `<td> <input name ="Invoices[${i}].Amount" value="${convertedResult[i].Amount}"  class="form-control" readonly/>   </td>`;
+                        row += "</tr>";
+                        document.getElementById("table-body").innerHTML += row;
+                    } 
+
+                
+             }
+         })
+
+    })
+   
+
+
+</script>
+
+
